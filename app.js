@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const passport = require('passport');
@@ -9,7 +9,13 @@ const cookieSession = require('cookie-session');
 
 const PORT = 4000;
 
-require('./config');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 let Transaction = require('./routes/transactionRoute');
 let Login = require('./routes/loginRoute')
@@ -17,13 +23,7 @@ let Login = require('./routes/loginRoute')
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(passport.initialize());
-app.use(passport.session());
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}))
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/perakoto', { useNewUrlParser: true });
@@ -34,8 +34,10 @@ connection.once('open', function() {
 })
 
 
-
 app.use('/transaction', Transaction);
+
+//login portion
+
 app.use('/login', Login);
 
 
