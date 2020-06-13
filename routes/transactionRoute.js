@@ -6,7 +6,7 @@ const router = express.Router();
 let Transaction = require('../models/transactionModel');
 
 router.get('/', (req, res) => {
-	    Transaction.find({}, (err, transactionModeltion) => {
+	    Transaction.find({}, (err, transaction) => {
 	        if (err) {
 	            console.log(err);
 	        } else {
@@ -62,6 +62,48 @@ router.put('/updateIncome/:id', (req, res) => {
 		});
 
 });
+
+
+
+// Show All Transactions (WORKING)
+// router.get('/', (req, res) => {
+//     Transaction.find({}, (err, transaction) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             res.json(transaction);
+//         }
+//     });
+// });
+
+// Get Gross Income	(WORKING)
+router.get('/grossIncome', (req, res) => {
+    Transaction.find({}, (err, transaction) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json('Gross Income: ' + sumGrossIncome(transaction));
+        }
+    });
+});
+
+
+// Get Single Transaction (WORKING)
+router.get('/retrieve/:id', function(req,res){
+	Transaction.find({"_id": req.params.id}, (err, single) => {
+		if (err) {
+			return res.status(500).send(err)
+		} else {
+			return res.status(200).send(single)
+		}
+	})
+})
+
+// Delete Transaction (WORKING)
+router.delete('/delete/:id', function(req,res){
+	Transaction.findByIdAndRemove({"_id": req.params.id}).then(function(){})
+	res.send({'Message': 'Transaction Successfully deleted.'})
+})
 
 
 module.exports = router;
