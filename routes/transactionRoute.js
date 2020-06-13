@@ -6,7 +6,7 @@ const router = express.Router();
 let Transaction = require('../models/transactionModel');
 
 router.get('/', (req, res) => {
-	    Transaction.find({}, (err, transaction) => {
+	    Transaction.find({}, (err, transactionModeltion) => {
 	        if (err) {
 	            console.log(err);
 	        } else {
