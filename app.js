@@ -18,7 +18,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 let Transaction = require('./routes/transactionRoute');
-let Login = require('./routes/loginRoute')
+let Login = require('./routes/loginRoute');
+let Income = require('./routes/incomeRoute');
+let Expense = require('./routes/expenseRoute');
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -35,6 +38,8 @@ connection.once('open', function() {
 
 
 app.use('/transaction', Transaction);
+app.use('/income', Income);
+app.use('/expense', Expense);
 
 //login portion
 
