@@ -27,6 +27,7 @@ function App(){
         </nav>
         <br/>
 
+        
         <Route path="/" exact component={mainBody} />
         </div>
 

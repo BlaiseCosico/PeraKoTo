@@ -1,4 +1,4 @@
-const express = require('express');
+	const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -25,8 +25,6 @@ let Expense = require('./routes/expenseRoute');
 
 app.use(cors());
 app.use(bodyParser.json());
-
-
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/perakoto', { useNewUrlParser: true });
