@@ -4,18 +4,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
+const col3Style = {
+	'backgroundColor': 'white',
+	padding: "10px",
+	"fontWeight": "bold",
+	"marginRight": "1px"
+
+}
+
 function handleClick(e, type) {   
 	 e.preventDefault();
 	 if (type == "income")
 	 console.log('The link was clicked.'); 
  };
 
+
+ 
 function process(){
 	return(
 		<div class = "container">
 			<ul class = "nav nav-tabs nav-pills">
-				<li class = "nav-item"><a data-toggle="pill" href="#Income" onClick={handleClick}>Income</a></li>
-				<li class = "nav-item"><a data-toggle="pill" href="#Expense" onClick={handleClick}>Expense</a></li>
+				<li class = "nav-item col-sm-3" style = {col3Style}><a data-toggle="pill" href="#Income" onClick={handleClick}>Income</a></li>
+				<li class = "nav-item col-sm-3"style = {col3Style}><a data-toggle="pill" href="#Expense" onClick={handleClick}>Expense</a></li>
 			</ul>
 
 		
@@ -37,7 +47,11 @@ function process(){
 							</div>
 
 							<div class="col-md-4 mb-3">
-								<label for="date">Date</label>
+								<label for="tags">Tags</label>
+								<input type="text" class="form-control" id="tags" placeholder="Add Tags.." />
+							</div>
+
+							<div class="col-md-4 mb-3">
 								<br></br>
 								<button class="btn btn-primary btn-lg" type="submit">Submit</button>
 							</div>

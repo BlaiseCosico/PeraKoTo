@@ -6,7 +6,7 @@ import Transaction from "./Transaction/Transaction.js"
 function RecentTransactions() {
     const col9Style = {
         'background-color': 'pink',
-        height: "250px",
+        height: "275px",
         overflow: "scroll"
     }
     
