@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import RecentTransactions from "./RecentTransactions/RecentTransactions.js"
 import "../App.css"
 
@@ -9,12 +11,12 @@ import income from "./income.js"
 
 function MainBody(){
 	const col3Style = {
-		'background-color': 'red',
+		'backgroundColor': 'red',
 		height: '600px'
 	};
 
 	const col9Style = {
-		'background-color': 'green',
+		'backgroundColor': 'green',
 		height: '600px'
 	}
 	return(
