@@ -1,21 +1,17 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
-function handleClick(e, type) {   
-	 e.preventDefault();
-	 if (type == "income")
-	 console.log('The link was clicked.'); 
- };
 
-function process(){
+function Process(){
+
+
 	return(
 		<div class = "container">
 			<ul class = "nav nav-tabs nav-pills">
-				<li class = "nav-item"><a data-toggle="pill" href="#Income" onClick={handleClick}>Income</a></li>
-				<li class = "nav-item"><a data-toggle="pill" href="#Expense" onClick={handleClick}>Expense</a></li>
+				<li class = "nav-item"><a data-toggle="pill" href="#Income">Income</a></li>
+				<li class = "nav-item"><a data-toggle="pill" href="#Expense">Expense</a></li>
 			</ul>
 
 		
@@ -74,4 +70,4 @@ function process(){
 	);
 };
 
-export default process;
+export default Process;

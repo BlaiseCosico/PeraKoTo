@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
@@ -19,6 +19,7 @@ function MainBody(){
 		'backgroundColor': 'green',
 		height: '600px'
 	}
+	
 	return(
 	<Router>
 		<div class="container-fluid">
