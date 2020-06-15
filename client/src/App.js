@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import logo from "./logo.svg";
-import mainBody from "./components/main.js"
+import mainBody from "./components/mainPage/mainPage.js"
 
 
 function App(){
@@ -11,7 +11,7 @@ function App(){
     <Router>
        <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="google.com" target="_blank">
+          <a className="navbar-brand" href="google.com" target="_blank">
             <img src={logo} width="30" height="30"/>
           </a>
           <Link to="/" className="navbar-brand">Pera-Ko-To Expense Tracker</Link>

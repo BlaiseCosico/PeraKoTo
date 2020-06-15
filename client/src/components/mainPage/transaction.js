@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./transaction.css"
+import "./style.css"
 
 function Transaction() {
     const listItem = {
@@ -14,10 +13,10 @@ function Transaction() {
         <div>
             <ul style={{padding:0,listStyleType: "none"}}>
             <li style={listItem}>
-                <span class="col-sm-3 transactionDate">May 5</span>
-                <span class="col-sm-3 transactionName">Ding's Wallet</span>
-                <span class="col-sm-3 transactionTags">Food</span>
-                <span class="col-sm-3 transactionAmount">Php 5,000</span>
+                <span className="col-sm-3 transactionDate">May 5</span>
+                <span className="col-sm-3 transactionName">Ding's Wallet</span>
+                <span className="col-sm-3 transactionTags">Food</span>
+                <span className="col-sm-3 transactionAmount">Php 5,000</span>
             </li>
                 <li style={listItem}>Transaction 2</li>
                 <li style={listItem}>Transaction 3</li>

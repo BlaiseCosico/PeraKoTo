@@ -13,6 +13,11 @@
     margin: 0 auto;
 }
 
-.transactionName {
+.panel2 {
+    background-color: beige;
+}
 
+.panel3 {
+    background-color: gray;
+    margin-top: 25px;
 }
