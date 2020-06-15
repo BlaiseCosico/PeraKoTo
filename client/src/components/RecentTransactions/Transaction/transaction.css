@@ -1,0 +1,18 @@
+.transactionTags {
+    color:white;
+    background-Color: green;
+}
+
+.transactionAmount {
+    position: absolute;
+    right:0;
+}
+
+.transactionTags {
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.transactionName {
+
+}

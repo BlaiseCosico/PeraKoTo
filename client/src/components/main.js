@@ -17,7 +17,8 @@ function MainBody(){
 
 	const col9Style = {
 		'backgroundColor': 'green',
-		height: '600px'
+		height: '600px',
+		"paddingTop": "3px"
 	}
 	
 	return(
@@ -29,7 +30,6 @@ function MainBody(){
 				</div>
 
 				<div class="col-sm-9" style = {col9Style}>
-					<h4><small>Income</small></h4>
 					<Route path="/" exact component={income} />
 
 					<h4><small>Recent Transactions</small></h4>
