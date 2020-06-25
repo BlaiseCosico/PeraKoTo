@@ -1,7 +1,22 @@
-import React from "react"
+import React, { useState, useEffect } from "react";
 
 
 function NetView(){
+
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch("https://localhost:4000/transaction")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setItems(result.items);
+            }
+          )
+      }, [])
+
+    console.log(items)
+
     return(
         <div className="Container-fluid">
             <div>
