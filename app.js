@@ -19,7 +19,7 @@ app.use(passport.session());
 
 let Transaction = require('./routes/transactionRoute');
 let Login = require('./routes/loginRoute');
-// let Income = require('./routes/incomeRoute');
+let Net = require('./routes/netWOrthRoute');
 // let Expense = require('./routes/expenseRoute');
 
 
@@ -27,7 +27,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/perakoto', { useNewUrlParser: true });
+mongoose.connect('mongodb://127.0.0.1:27017/perakoto', { useNewUrlParser: true, useUnifiedTopology: true  },);
 const connection = mongoose.connection;
 
 connection.once('open', function() {
@@ -36,7 +36,7 @@ connection.once('open', function() {
 
 
 app.use('/transaction', Transaction);
-// app.use('/income', Income);
+app.use('/net', Net);
 // app.use('/expense', Expense);
 
 //login portion

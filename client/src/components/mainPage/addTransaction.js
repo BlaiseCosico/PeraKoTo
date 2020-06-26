@@ -32,20 +32,25 @@ function Process(){
 			<br></br>
 			<h4> New Transactions </h4>
 
-			<ul className = "nav nav-pills">
-				<li className = "nav-item">
-					<a class="nav-link active" data-toggle="pill" href="#Income" onClick={handleClick}>Income</a>
-				</li>
+			<div className = "card">
+				<div className = "card-header">
+					<ul className = "nav nav-pills">
+						<li className = "nav-item">
+							<a class="nav-link active" data-toggle="pill" href="#Income" onClick={handleClick}>Income</a>
+						</li>
 
-				<li className = "nav-item">
-					<a class="nav-link" data-toggle="pill" href="#Expense" onClick={handleClick}>Expense</a>
-				</li>
-			</ul>
+						<li className = "nav-item">
+							<a class="nav-link" data-toggle="pill" href="#Expense" onClick={handleClick}>Expense</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 
-		
-			<div className="tab-content">
+
+
+			<div className="tab-content card-body">
 				<div id="Income" className="container tab-pane active">
-					<h3>Income</h3>
+					<h3 className="card-title">Income</h3>
 					<form>
 						<div className="form-row">
 							<div className="col-md-9 mb-3">
@@ -73,7 +78,7 @@ function Process(){
 					</form>
 				</div>
 				<div id="Expense" className="container tab-pane fade">
-					<h3>Expense</h3>
+					<h3 className="card-title">Expense</h3>
 					<form>
 						<div className="form-row">
 							<div className="col-md-9 mb-3">

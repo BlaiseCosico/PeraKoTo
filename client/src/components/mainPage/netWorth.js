@@ -5,15 +5,21 @@ function NetView(){
     return(
         <div className="Container-fluid">
             <div>
-            <h4>Current Funds <span class="badge badge-success">P200</span></h4>
+                <h4>Current Funds <span className="badge badge-success">P200</span></h4>
             </div>
             
-            <div>
-                <h1>Top 5 Tags</h1>
-                <ul>
-                    <li>Tag 1</li>
-                </ul>
-            
+            <div className="card">
+                <div className="card-header">
+                    Top 5 Tags
+                </div>
+
+                <div className="list-group">
+
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    
+                </div>
             </div>
 
         </div>
@@ -21,3 +27,4 @@ function NetView(){
 }
 
 export default NetView
+
