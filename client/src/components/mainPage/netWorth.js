@@ -3,24 +3,40 @@ import React, { useState, useEffect } from "react";
 
 function NetView(){
 
-    const [items, setItems] = useState([]);
+    const [net, setNet] = useState();
+    const [user, setUser] = useState();
 
-    useEffect(() => {
-        fetch("https://localhost:4000/transaction")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setItems(result.items);
-            }
-          )
-      }, [])
+	useEffect(() => {
+		fetchItems();
+	}, [user])
 
-    console.log(items)
+	const fetchItems = async () => {
+        //hack
 
+        console.log("user>>>>", user)
+
+		const data = await fetch(`http://localhost:4000/net/getnet/${user}`); //does not go away when clearning field
+        const amount = await data.json();
+        console.log(typeof amount == "object");
+        if ( !(typeof amount == "object") ) setNet(amount);
+        else setNet("")
+		
+	};
+
+    console.log("net: " +net)
     return(
         <div className="Container-fluid">
+            
+            <input 
+                name="user"
+                placeholder="username"
+                value={user}
+                onChange={e => setUser(e.target.value)}
+            />
+
+            <div>{user}</div>
             <div>
-                <h4>Current Funds <span className="badge badge-success">P200</span></h4>
+                <h4>Current Funds <span className="badge badge-success">{net}</span></h4>
             </div>
             
             <div className="card">

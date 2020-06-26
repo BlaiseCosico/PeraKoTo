@@ -13,18 +13,18 @@ function handleClick(e, type) {
  
 function Process(){
 
-	useEffect(() => {
-		fetchItems();
-	}, [])
+	// useEffect(() => {
+	// 	fetchItems();
+	// }, [])
 
-	const [items, setItems] = useState([]);
+	// const [items, setItems] = useState([]);
 
-	const fetchItems = async () => {
-		const data = await fetch('http://localhost:4000/transaction');
-		const items = await data.json();
-		console.log(items);
-		setItems(items);
-	};
+	// const fetchItems = async () => {
+	// 	const data = await fetch('http://localhost:4000/transaction');
+	// 	const items = await data.json();
+	// 	console.log(items);
+	// 	setItems(items);
+	// };
 
 
 	return(
