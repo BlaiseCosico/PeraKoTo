@@ -1,29 +1,45 @@
 import React, { useState, useEffect } from "react";
-
+import TopCategories from "./topCategories";
 
 function NetView(){
 
     const [net, setNet] = useState();
     const [user, setUser] = useState();
+    const [categories, setCategories] = useState({})
 
 	useEffect(() => {
-		fetchItems();
+        fetchNewWorth();
+        fetchTopCategories();
 	}, [user])
 
-	const fetchItems = async () => {
-        //hack
+	const fetchNewWorth = async () => {
+        try{
+            const data = await fetch(`http://localhost:4000/net/getnet/${user}`); //does not go away when clearning field
+            const amount = await data.json();
+            if ( !(typeof amount == "object") ) setNet(amount);
+            else setNet("")
+        }catch(err){
+            console.log(err);
+        }
+    };
 
-        console.log("user>>>>", user)
+    const fetchTopCategories = async () => {
+        try{
+            const data = await fetch(`http://localhost:4000/net/top5/${user}`);
+            const top5 = await data.json();
+            setCategories(top5)
+        }catch(err){
+            console.log(err);
+        }
 
-		const data = await fetch(`http://localhost:4000/net/getnet/${user}`); //does not go away when clearning field
-        const amount = await data.json();
-        console.log(typeof amount == "object");
-        if ( !(typeof amount == "object") ) setNet(amount);
-        else setNet("")
-		
-	};
-
-    console.log("net: " +net)
+    }
+// var sortedKeys = Object.keys(myobj).sort(); gives u a list of keys
+    console.log("net: " +net);
+    console.log('bills: '+categories[Object.keys(categories)[0]]) //not all browsers might support this
+    
+    console.log('investment: '+categories.investment)
+    console.log('food: '+categories.food)
+    
     return(
         <div className="Container-fluid">
             
@@ -45,10 +61,10 @@ function NetView(){
                 </div>
 
                 <div className="list-group">
-
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                        {Object.entries(categories).map( ([id, val]) => 
+                            <TopCategories id = {id} value = {val} />
+                        //object.enteries() gives me a list, so that means i can map it
+                        )}
                     
                 </div>
             </div>

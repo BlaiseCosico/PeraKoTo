@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 const Transaction = require('../models/transactionModel');
+const Category = require('../models/categoriesModel')
 
 //Get New Worth
 router.get('/getNet/:userID', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/getNet/:userID', async (req, res) => {
             else expense += item.trans_amount
         });
         
-        total = income - expense
+        total = income + expense
         res.status(200).json(total)
 
     }catch(err){
@@ -25,21 +26,21 @@ router.get('/getNet/:userID', async (req, res) => {
     }
 });
 
-//Get top 5 Tags/Category (maybe should just make a database for category)
 router.get('/top5/:userID', async (req,res) => {
     try{
-        let category = {};
-        const top5 = await Transaction.find({user_id: req.params.userID});
+        let category = {}
+        const top5 = await Category.find({user_id: req.params.userID}).sort({category_total: 'desc'});
+
         if(!top5.length){
             res.status(404).json({message: "User not found"})
         }
 
         top5.forEach(item => {
-            if (item.trans_category in category) category[item.trans_category] += item.trans_amount
-            else category[item.trans_category] = item.trans_amount
+            if (item.category in category) category[item.category] += item.category_total
+            else category[item.category] = item.category_total
         });
         
-        res.status(200).json(category) //either sort this but dictionaries/objects are not order or make a new schema
+        res.status(200).json(category)
     }catch(err){
         res.status(400).json({message: err})
     }

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Transaction = require('../models/transactionModel');
+const Category = require('../models/categoriesModel');
 
 //Get all transactions
 router.get('/', (req, res) => {
@@ -36,29 +37,41 @@ router.get('/userid/:user_id', (req, res) => {
 
 
 // add transaction
-router.post('/add', (req, res) => {
+router.post('/add', async (req, res) => {
 	if(Object.keys(req.body).length === 0){
-		return res.status(404).send({message:'Values cannot be empty'})
+		res.status(404).send({message:'Values cannot be empty'})
 	}
-	let transaction = new Transaction(req.body);
-	transaction.save()
-		.then(todo =>{
-			res.status(200).json({'transaction': "transaction added successfully"})
-		})
-		.catch(err => {
-			res.status(400).send('adding new transaction failed');
-		});
+	const transaction = new Transaction(res.body);
 
-	// use findIdandUpdate
-	// let category = new Category({
-	// 	user_id : res.body.user_id;
-	// 	category : res.body.category;
-	// 	category_total 
-	// })
+	try{
+		await transaction.save()
+
+		await Category.findOneAndUpdate({user_id: req.body.user_id, category: req.body.trans_category}, {$inc: {category_total:req.body.trans_amount}},{
+			new: true,
+			upsert: true // Make this update into an upsert
+		  });
+
+
+		res.status(200).json({'transaction': "transaction added successfully"})
+	}
+	catch(err){
+		res.status(400).send('adding new transaction failed');
+	};
 });
 
-//what exactly can you update??
-//income value, expense value, note, type, category
+
+router.post('/findOneTest', async (req, res) => {
+	try{
+
+		res.status(200).json(category)
+	}
+	catch(err){
+		res.status(404).json({message: err})
+	}
+
+})
+
+
 router.patch('/updateIncome/:id', (req, res) => {
 	let id = req.params.id;
 	// return res.status(200).send({message:'found id'})
