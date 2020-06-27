@@ -3,8 +3,7 @@ const router = express.Router();
 
 const Transaction = require('../models/transactionModel');
 
-//Get all transactions
-router.get('/', (req, res) => {
+const AllTransactions = router.get('/', (req, res) => {
 	    Transaction.find({}, (err, transaction) => {
 	        if (err) {
 	            console.log(err);
@@ -92,5 +91,5 @@ router.delete('/delete/:id', function(req,res){
 	res.send({'Message': 'Transaction Successfully deleted.'})
 })
 
-
+exports.AllTransactions = AllTransactions;
 module.exports = router;
