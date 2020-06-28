@@ -10,6 +10,7 @@ function NetView(){
 	useEffect(() => {
         fetchNewWorth();
         fetchTopCategories();
+       
 	}, [user])
 
 	const fetchNewWorth = async () => {
@@ -31,22 +32,14 @@ function NetView(){
         }catch(err){
             console.log(err);
         }
-
     }
-// var sortedKeys = Object.keys(myobj).sort(); gives u a list of keys
-    console.log("net: " +net);
-    console.log('bills: '+categories[Object.keys(categories)[0]]) //not all browsers might support this
-    
-    console.log('investment: '+categories.investment)
-    console.log('food: '+categories.food)
-    
     return(
         <div className="Container-fluid">
             
             <input 
                 name="user"
                 placeholder="username"
-                value={user}
+                value={user || ''}
                 onChange={e => setUser(e.target.value)}
             />
 
@@ -60,18 +53,18 @@ function NetView(){
                     Top 5 Tags
                 </div>
 
-                <div className="list-group">
-                        {Object.entries(categories).map( ([id, val]) => 
-                            <TopCategories id = {id} value = {val} />
-                        //object.enteries() gives me a list, so that means i can map it
-                        )}
+                
+                {Object.entries(categories).map( ([id, val]) => 
+                    <TopCategories key = {id} id = {id} value = {val} />
+                //object.enteries() gives me a list, so that means i can map it
+                )}
                     
-                </div>
+                
             </div>
 
         </div>
     );
 }
 
-export default NetView
+export default NetView;
 

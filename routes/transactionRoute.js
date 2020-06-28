@@ -41,17 +41,16 @@ router.post('/add', async (req, res) => {
 	if(Object.keys(req.body).length === 0){
 		res.status(404).send({message:'Values cannot be empty'})
 	}
-	const transaction = new Transaction(res.body);
+	const transaction = new Transaction(req.body);
 
 	try{
 		await transaction.save()
-
 		await Category.findOneAndUpdate({user_id: req.body.user_id, category: req.body.trans_category}, {$inc: {category_total:req.body.trans_amount}},{
 			new: true,
 			upsert: true // Make this update into an upsert
 		  });
 
-
+		console.log(transaction);
 		res.status(200).json({'transaction': "transaction added successfully"})
 	}
 	catch(err){
