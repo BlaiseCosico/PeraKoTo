@@ -1,6 +1,10 @@
 import React from "react";
+import GoogleLogin from 'react-google-login';
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const responseGoogle = (response) => {
+    console.log(response);
+}
 
 function loginPage(){
     return (
@@ -38,6 +42,15 @@ function loginPage(){
             >
                 Register
             </button>
+
+            <GoogleLogin
+                clientId="571981908200-itbbtjfc1oic92csqe33bscssl8p7c57.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+            />
+            
         </form>
     </div>
     );
