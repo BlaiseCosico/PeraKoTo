@@ -1,12 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+
+import "./components/mainPage/style.css"
+
+import NetView from "./components/mainPage/netWorth.js"
+import AddTransaction from "./components/mainPage/addTransaction.js"
+import RecentTransactions from "./components/mainPage/recentTransactions.js"
+import loginPage from "./components/loginPage/login.js"
+import registrationPage from "./components/loginPage/login.js"
+
+
 import logo from "./logo.svg";
-import mainBody from "./components/mainPage/mainPage.js"
 
 
 function App(){
+
+  const [user, setUser] = useState();
+
   return (
     <Router>
        <div className="container">
@@ -18,18 +32,53 @@ function App(){
           <div className="collpase navbar-collapse">
             <ul className="navbar-nav ml-auto">
               <li className="navbar-item">
-                <Link to="/" className="nav-link">Something</Link>
+                <Link to="/Register" className="nav-link">Register</Link>
               </li>
               <li className="navbar-item">
-                <Link to="/create" className="nav-link">Something</Link>
+                <Link to="/Login" className="nav-link">Login</Link>
               </li>
             </ul>
           </div>
         </nav>
         <br/>
 
-        
-        <Route path="/" exact component={mainBody} />
+        <div className="container">
+          <Route path="/Register" exact component={registrationPage} />
+          <Route path="/Login" exact component={loginPage} />
+
+          <div className="row content">
+            <div className="col-sm-3">
+                
+                <Route exact path="/" render={ (props) => (
+                  <NetView {...props} user={user} setUser={setUser}/>
+                  )}
+                />
+
+
+            </div>
+
+            <div className="col-sm-9">
+              <div className="row">
+                <Route path="/" exact component={AddTransaction} />
+              </div>
+
+              <div className="row">
+                <Route exact path="/" render={ (props) => (
+                    <RecentTransactions {...props} user={user} setUser={setUser}/>
+                    )}
+                  />
+                {/* <Route path="/" exact component={RecentTransactions} /> */}
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <footer className="container-fluid">
+          <p>Footer Text</p>
+        </footer>
+
+
         </div>
 
     </Router>

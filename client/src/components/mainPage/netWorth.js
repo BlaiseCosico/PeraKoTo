@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TopCategories from "./topCategories";
 
-function NetView(){
+function NetView({user, setUser}){
 
     const [net, setNet] = useState();
-    const [user, setUser] = useState();
     const [categories, setCategories] = useState({})
 
 	useEffect(() => {

@@ -6,7 +6,7 @@ import "./style.css"
 
 import { useInput } from './useInput';
  
-function Process(){
+function AddTransaction(){
 
 	const [transaction, handleChange] = useInput( { user_id: "test", trans_type: "", trans_amount: "", trans_category: "", trans_note: "", trans_date: ""} );
 
@@ -148,4 +148,4 @@ function Process(){
 	);
 };
 
-export default Process;
+export default AddTransaction;

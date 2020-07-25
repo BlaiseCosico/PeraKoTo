@@ -1,10 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"
-import { data } from "jquery";
 
 
-
+ 
 
 class Transaction extends React.Component {
     constructor() {
@@ -13,10 +12,9 @@ class Transaction extends React.Component {
         this.state = {
             'transactions': []
         }
+        // this.user = !this.props.user.user ? " ": this.props.user.user;
+
     }
-
-    
-
     componentDidMount() {
         this.getTransactions();
     }
@@ -27,13 +25,14 @@ class Transaction extends React.Component {
             .then(results => this.setState({'transactions': results}));
     }
         render() {
+            let user = !this.props.user.user ? " ": this.props.user.user;
+            console.log(user)
             return (
-
                 <ul style={{padding:0,listStyleType: "none"}}>
                     {this.state.transactions.map(function(transaction, index) {
                         return (
                                 <li style={{padding: "8px" ,backgroundColor: "white",margin: "1px"}}>
-
+                        
                         <span className="col-sm-3 transactionDate">{transaction.trans_date}</span>
                         <span className="col-sm-3 transactionName">{transaction.trans_type}</span>
                         <span className="col-sm-3 transactionTags">{transaction.trans_category}</span>
@@ -46,7 +45,6 @@ class Transaction extends React.Component {
 
 
                 </ul>
-
             
         )
     }

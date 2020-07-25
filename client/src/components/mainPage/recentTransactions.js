@@ -6,7 +6,7 @@ import "./style.css"
 
 import Transaction from "./transaction.js"
 
-function RecentTransactions() {
+function RecentTransactions(user, setUser) {
     const col9Style = {
         'backgroundColor': 'pink',
         height: "275px",
@@ -19,7 +19,13 @@ function RecentTransactions() {
                 <h4><small>Recent Transactions</small></h4>
                 <div className="row content" >
                     <div className="col-sm-12" style = {col9Style}>
-                    <Route path="/" exact component={Transaction} />
+                    {/* <Route path="/" exact component={Transaction} /> */}
+
+                    <Route exact path="/" render={ (props) => (
+                        <Transaction {...props} user={user} setUser={setUser}/>
+                        )}
+                    />
+
                     </div>
                 </div>
             </div>
