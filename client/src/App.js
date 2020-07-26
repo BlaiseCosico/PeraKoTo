@@ -32,10 +32,10 @@ function App(){
           <div className="collpase navbar-collapse">
             <ul className="navbar-nav ml-auto">
               <li className="navbar-item">
-                <Link to="/Register" className="nav-link">Register</Link>
+                <Link to="/register" className="nav-link">Register</Link>
               </li>
               <li className="navbar-item">
-                <Link to="/Login" className="nav-link">Login</Link>
+                <Link to="/login" className="nav-link">Login</Link>
               </li>
             </ul>
           </div>
@@ -43,8 +43,8 @@ function App(){
         <br/>
 
         <div className="container">
-          <Route path="/Register" exact component={registrationPage} />
-          <Route path="/Login" exact component={loginPage} />
+          <Route path="/register" exact component={registrationPage} />
+          <Route path="/login" exact component={loginPage} />
 
           <div className="row content">
             <div className="col-sm-3">

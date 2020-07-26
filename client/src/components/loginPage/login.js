@@ -44,8 +44,8 @@ function loginPage(){
             </button>
 
             <GoogleLogin
-                clientId="571981908200-itbbtjfc1oic92csqe33bscssl8p7c57.apps.googleusercontent.com"
-                buttonText="Login"
+                clientId="571981908200-b9kkn6gprh4g09qkg9qumagipju4s4bs.apps.googleusercontent.com"
+                buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
